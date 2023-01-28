@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/'
+      render json: "success"
     else
-      redirect_to '/login'
+      render json: "login"
     end
   end
 
