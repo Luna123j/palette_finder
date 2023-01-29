@@ -1,7 +1,9 @@
 import React from "react"
 import axios from 'axios'
+import {useNavigate} from "react-router-dom";
 export default function Login() {
-
+  const navigate = useNavigate()
+  
   const loginHandler = (e) => {
     e.preventDefault();
     const data = {
@@ -10,7 +12,12 @@ export default function Login() {
     }
 
     axios.post("/login", data,{credentials: 'include' }).then((res) => {
-      console.log(res.data)
+      console.log(res)
+      if(res.data.message === "success"){
+        navigate('/')
+      }else{
+        navigate('/users') //depends on error message
+      }
     }).catch(err => console.log(err));
   }
 
