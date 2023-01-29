@@ -9,7 +9,7 @@ export default function Login() {
         password: e.target[1].value
     }
 
-    axios.post("/login", data).then((res) => {
+    axios.post("/login", data,{ withCredentials: true }).then((res) => {
       console.log(res.data)
     }).catch(err => console.log(err));
   }

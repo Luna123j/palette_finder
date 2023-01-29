@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/image' => 'images#new'
   post 'image' => 'images#create'
   post 'deleteimage' => 'images#destroy'
-  
+
 
 
 

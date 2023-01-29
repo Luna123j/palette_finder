@@ -5,10 +5,12 @@ export default function Signup() {
   const signupHandler = (e) => {
     e.preventDefault();
     const data = {
-      username: e.target[0].value,
-      email: e.target[1].value,
-      password: e.target[2].value,
-      password_confirmation: e.target[3].value
+      user:{
+        username: e.target[0].value,
+        email: e.target[1].value,
+        password: e.target[2].value,
+        password_confirmation: e.target[3].value
+      }
     }
 
     axios.post("/users", data).then((res) => {
