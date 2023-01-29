@@ -13,7 +13,7 @@ export default function Signup() {
       }
     }
 
-    axios.post("/users", data).then((res) => {
+    axios.post("/users", data, { withCredentials: true }).then((res) => {
       console.log(res.data)
     }).catch(err => console.log(err));
   }
