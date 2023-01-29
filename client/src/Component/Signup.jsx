@@ -1,6 +1,9 @@
 import React from "react"
 import axios from 'axios'
+import {useNavigate} from "react-router-dom";
+
 export default function Signup() {
+  const navigate = useNavigate()
 
   const signupHandler = (e) => {
     e.preventDefault();
@@ -14,7 +17,13 @@ export default function Signup() {
     }
 
     axios.post("/users", data, { withCredentials: true }).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
+      if(res.data.message === "success"){
+        //will set username to nav bar
+        navigate('/')
+      }else{
+        navigate('/users') //will depends on error message
+      }
     }).catch(err => console.log(err));
   }
 

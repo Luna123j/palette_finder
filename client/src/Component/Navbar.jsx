@@ -13,7 +13,7 @@ function NavBar() {
           <Nav className="justify-content-end">
             <Nav.Link href="#features">Features</Nav.Link>
             <Navbar.Text>
-              Signed in as: <a href="#login">Mark Otto</a>
+              Signed in as: <a href="#login">username</a>
             </Navbar.Text>
           </Nav>
         </Navbar.Collapse>
