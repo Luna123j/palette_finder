@@ -13,6 +13,7 @@ export default function Login() {
 
     axios.post("/login", data,{credentials: 'include' }).then((res) => {
       if(res.data.message === "success"){
+        console.log("login info",res.data)
         //will set username to nav bar
         navigate('/')
       }else{
