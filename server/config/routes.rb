@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/index'
 
   get '/login' => 'sessions#new'
-  get '/islogin' => 'sessions#isLoggedIn'
+  get '/islogin' => 'sessions#isLoggedIn?'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
@@ -21,5 +21,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users, only: [:index]
+  resources :users, only: [:create]
 end

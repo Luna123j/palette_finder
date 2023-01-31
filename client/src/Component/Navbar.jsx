@@ -4,12 +4,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import axios from 'axios';
 import { Link, } from 'react-router-dom';
 // import { useState } from 'react';
-// import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
+import { reset } from '../redux/isLoggedIn';
+import { useEffect } from 'react';
+
 
 function NavBar() {
-  const {isLoggedIn} = useSelector(state=>state)
-  console.log("this is variable",isLoggedIn)
+  const { isLoggedIn } = useSelector(state => state)
+  const dispatch = useDispatch()
+
+  console.log("this is variable", isLoggedIn)
   // const [isLoggedIn, setIsLoggedIn] = useState({ status: false, user: {} })
 
   // useEffect(() => {
@@ -25,14 +29,18 @@ function NavBar() {
   //     .catch(error => console.log('api errors:', error))
   // }, [])
 
-  const logoutHandler =()=>{
-       axios.post('/logout', { withCredentials: true })
+  const logoutHandler = () => {
+    axios.post('/logout', { withCredentials: true })
       .then(res => {
-        console.log(res.data)
+        console.log(res.data.message)
+        if (res.data.message === 'logout') {
+          dispatch(reset())
+        }
       })
       .catch(error => console.log('api errors:', error))
   }
-  
+
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>

@@ -1,10 +1,12 @@
 import React from "react"
 import axios from 'axios'
 import {useNavigate} from "react-router-dom";
+import { useDispatch } from 'react-redux'
 
 export default function Signup() {
   const navigate = useNavigate()
 
+  const dispatch = useDispatch()
   const signupHandler = (e) => {
     e.preventDefault();
     const data = {
@@ -20,6 +22,9 @@ export default function Signup() {
       // console.log(res.data)
       if(res.data.message === "success"){
         //will set username to nav bar
+        if(res.data.logged_in){
+          dispatch({ type: "isLoggedIn/loggedin", payload: res.data.user });
+        }
         navigate('/')
       }else{
         navigate('/users') //will depends on error message
