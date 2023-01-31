@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
 
@@ -13,7 +14,7 @@ function NavBar() {
           <Nav className="justify-content-end">
             <Nav.Link href="#features">Features</Nav.Link>
             <Navbar.Text>
-              Signed in as: <a href="#login">username</a>
+              <Link to="/users" >Signup</Link> | <Link to="/login" >Login</Link>
             </Navbar.Text>
           </Nav>
         </Navbar.Collapse>
