@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'users/index'
 
   get '/login' => 'sessions#new'
+  get '/islogin' => 'sessions#isLoggedIn'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
