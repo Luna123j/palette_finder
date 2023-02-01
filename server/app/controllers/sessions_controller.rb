@@ -15,13 +15,6 @@ class SessionsController < ApplicationController
 
   def isLoggedIn?
     
-    puts "**************"
-    puts session[:user_id]
-    puts "**************"
-    puts @current_user
-    puts "**************"
-    puts @user
-
     @current_user = User.find(session[:user_id]) if session[:user_id]
     if @current_user
       render json: {
@@ -37,11 +30,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    puts "this is user id"
-    puts 
 
     session.delete :user_id
-    render json: {message: "logout"}
+    render json: {message: "success"}
   end
 
 
