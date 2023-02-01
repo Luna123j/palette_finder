@@ -8,6 +8,7 @@ import { loggedin, reset } from './redux/isLoggedIn';
 import Home from './Component/Home';
 import { useEffect } from 'react';
 import axios from 'axios';
+import Upload from './Component/Upload';
 
 function App() {
   
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users" element={<Signup />} />
+        <Route path="/upload" element={<Upload />} />
       </Routes>
     </BrowserRouter>
   );
