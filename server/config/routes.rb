@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  get 'signup' => 'users#new'
+  get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
   get '/image' => 'images#new'
-  post 'image' => 'images#create'
-  post 'deleteimage' => 'images#destroy'
+  post '/image' => 'images#create'
+  post '/deleteimage' => 'images#destroy'
 
 
 
