@@ -29,7 +29,7 @@ export default function Signup() {
       }else{
         navigate('/users') //will depends on error message
       }
-    }).catch(err => console.log(err));
+    }).catch(err => console.log('api errors:',err));
   }
 
   return (

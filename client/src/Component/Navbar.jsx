@@ -14,26 +14,12 @@ function NavBar() {
   const dispatch = useDispatch()
 
   console.log("this is variable", isLoggedIn)
-  // const [isLoggedIn, setIsLoggedIn] = useState({ status: false, user: {} })
-
-  // useEffect(() => {
-  //   axios.get('/login', { withCredentials: true })
-  //     .then(res => {
-  //       console.log(res.data)
-  //       if (res.data.logged_in) {
-  //         setIsLoggedIn({ status: true, user: res.data.user })
-  //       } else {
-  //         setIsLoggedIn({ status: false, user: {} })
-  //       }
-  //     })
-  //     .catch(error => console.log('api errors:', error))
-  // }, [])
 
   const logoutHandler = () => {
     axios.post('/logout', { withCredentials: true })
       .then(res => {
         console.log(res.data.message)
-        if (res.data.message === 'logout') {
+        if (res.data.message === 'success') {
           dispatch(reset())
         }
       })

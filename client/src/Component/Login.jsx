@@ -25,7 +25,7 @@ export default function Login() {
       }else{
         navigate('/users') //depends on error message
       }
-    }).catch(err => console.log(err));
+    }).catch(err => console.log('api errors:',err));
   }
 
   return (
