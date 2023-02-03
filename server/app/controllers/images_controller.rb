@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
       puts image_params
       image = Image.new(image_params.merge(user_id: @current_user.id))
       if image.save
-        render json: {images: image}
+        render json: {images: image, message: 'success'}
       end
     else
       render json: {message: 'please login'}
