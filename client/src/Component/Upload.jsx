@@ -4,11 +4,13 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Upload() {
-  const navigate = useNavigate()
-  const [imgFile, setImgFile] = useState([])
-  const [imgUrl, setImgUrl] = useState([])
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const [imgFile, setImgFile] = useState([])
+  // const [imgUrl, setImgUrl] = useState([])
 
   const uploadHandler = (e) => {
     e.preventDefault()
@@ -34,15 +36,16 @@ export default function Upload() {
     let imageUrlState = [];
     imgFile.forEach(image => {
       imageUrlState.push(URL.createObjectURL(image))
-      setImgUrl(imageUrlState)
+      dispatch({ type: "imgInfo/setImgUrl", payload: imageUrlState });
+      // setImgUrl(imageUrlState)
     })
   }, [imgFile])
 
 
   const onFileChange = (e) => {
     e.preventDefault();
-
-    setImgFile([...e.target.files])
+    dispatch({ type: "imgInfo/setImgFile", payload: [...e.target.files] });
+    // setImgFile([...e.target.files])
 
   }
 
@@ -55,7 +58,7 @@ export default function Upload() {
 
       <input type='file' multiple accept="image/*" onChange={onFileChange} />
       <button type="submit">submit</button>
-      {imgUrl.map((imageSrc,index) => <img src={imageSrc} key={index}/>)}
+      {imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} />)}
     </div>
   )
 }
