@@ -9,8 +9,11 @@ import { useDispatch } from "react-redux";
 export default function Upload() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const [imgFile, setImgFile] = useState([])
-  // const [imgUrl, setImgUrl] = useState([])
+  // const imgFile = useSelector(state => state.data)
+  const imgUrlredux = useSelector(state => state.imgUrl)
+
+  const [imgFile, setImgFile] = useState([])
+  const [imgUrl, setImgUrl] = useState([])
 
   const uploadHandler = (e) => {
     e.preventDefault()
@@ -34,20 +37,26 @@ export default function Upload() {
   useEffect(() => {
 
     let imageUrlState = [];
-    imgFile.forEach(image => {
-      imageUrlState.push(URL.createObjectURL(image))
-      dispatch({ type: "imgInfo/setImgUrl", payload: imageUrlState });
-      // setImgUrl(imageUrlState)
-    })
+    
+      imgFile.forEach(image => {
+        imageUrlState.push(URL.createObjectURL(image))
+        console.log("^^^^^^^^^^^^^",imageUrlState)
+        setImgUrl(imageUrlState)
+        dispatch({ type: "imgInfo/setImgUrl", payload: imageUrlState });
+      })
+
   }, [imgFile])
 
 
   const onFileChange = (e) => {
     e.preventDefault();
-    dispatch({ type: "imgInfo/setImgFile", payload: [...e.target.files] });
-    // setImgFile([...e.target.files])
+    // dispatch({ type: "imgInfo/setImgFile", payload: [...e.target.files] });
+    setImgFile([...e.target.files])
 
   }
+
+  console.log('^^^^^^^^^^^^^^^^^',imgUrl)
+  console.log('^^^^^^^^^^^^^^^^^',imgUrlredux)
 
   return (
     <div>
@@ -58,7 +67,7 @@ export default function Upload() {
 
       <input type='file' multiple accept="image/*" onChange={onFileChange} />
       <button type="submit">submit</button>
-      {imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} />)}
+      { imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} /> )  }
     </div>
   )
 }
