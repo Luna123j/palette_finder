@@ -19,7 +19,7 @@ export default function Upload() {
     e.preventDefault()
     const data = {
       images: {
-        imgUrl: e.target[0].value,
+        imgUrl: imgUrl,
         palette_data: ['1'],
       }
 
@@ -66,7 +66,7 @@ export default function Upload() {
       </form> */}
 
       <input type='file' multiple accept="image/*" onChange={onFileChange} />
-      <button type="submit">submit</button>
+      <button type="submit" onClick={uploadHandler}>submit</button>
       { imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} /> )  }
     </div>
   )
