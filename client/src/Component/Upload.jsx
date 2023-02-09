@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import Canvas from "./Canvas";
 
 export default function Upload() {
   const navigate = useNavigate();
@@ -65,7 +66,8 @@ export default function Upload() {
         <button type="submit">submit</button>
       </form> */}
 
-      <input type='file' multiple accept="image/*" onChange={onFileChange} />
+      <input type='file' accept="image/*" onChange={onFileChange} />
+      <Canvas imgfile={imgFile} imgurl={imgUrl}/>
       <button type="submit" onClick={uploadHandler}>submit</button>
       { imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} /> )  }
     </div>
