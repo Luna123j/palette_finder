@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Canvas from "./Canvas";
 
+
+
 export default function Upload() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
