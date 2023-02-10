@@ -42,10 +42,10 @@ export default function Signup() {
           Email: <input type="text" name="email" />
         </label>
         <label>
-          Password: <input type="text" name="password" />
+          Password: <input type="password" name="password" />
         </label>
         <label>
-          Password Confirmation: <input type="text" name="password_confirmation" />
+          Password Confirmation: <input type="password" name="password_confirmation" />
         </label>
         <button type="submit">Submit</button>
       </form>
