@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Canvas from "./Canvas";
+import Palette from "./Palette";
 
 
 
@@ -71,7 +72,8 @@ export default function Upload() {
       <input type='file' accept="image/*" onChange={onFileChange} />
       <Canvas imgfile={imgFile} imgurl={imgUrl}/>
       <button type="submit" onClick={uploadHandler}>submit</button>
-      { imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} /> )  }
+      {/* { imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} /> )  } */}
+      <Palette />
     </div>
   )
 }

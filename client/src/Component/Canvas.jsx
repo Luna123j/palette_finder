@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { buildRgb, quantization } from "./helpers/generatePalette.js"
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 export default function Canvas(props) {
   const dispatch = useDispatch();
@@ -29,6 +29,7 @@ export default function Canvas(props) {
     }
 
   }, [imgUrl])
+  
 
   // const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   return <canvas ref={canvasRef} {...props} />
