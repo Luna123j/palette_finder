@@ -6,7 +6,7 @@ export const paletteDataSlice = createSlice({
     data: []
   },
   reducers: {
-    setpaletteData: (state,action) =>{
+    setPaletteData: (state,action) =>{
       state.data = action.payload;
     },
     reset:(state) =>{
@@ -15,6 +15,6 @@ export const paletteDataSlice = createSlice({
   }
 })
 
-export const {setpaletteData,reset} = paletteDataSlice.actions;
+export const {setPaletteData,reset} = paletteDataSlice.actions;
 
 export default paletteDataSlice.reducer;

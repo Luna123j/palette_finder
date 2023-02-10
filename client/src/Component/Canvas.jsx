@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { buildRgb, quantization } from "./helpers/generatePalette.js"
+import { useDispatch } from "react-redux";
 
 export default function Canvas(props) {
+  const dispatch = useDispatch();
   const canvasRef = useRef(null)
   const imgFile = props.imgfile;
   const imgUrl = props.imgurl;
@@ -22,6 +24,7 @@ export default function Canvas(props) {
         const rgbValues = buildRgb(imageData.data);
         colors = quantization(rgbValues, 2)
         console.log(colors)
+        dispatch({type: 'paletteData/setPaletteData', payload: colors})
       }
     }
 
