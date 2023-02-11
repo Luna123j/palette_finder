@@ -9,6 +9,7 @@ import Home from './Component/Home';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Upload from './Component/Upload';
+import SavedImage from './Component/SavedImage';
 
 function App() {
   
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/users" element={<Signup />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path='/history' element={<SavedImage />} />
       </Routes>
     </BrowserRouter>
   );
