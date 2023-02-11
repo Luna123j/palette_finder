@@ -1,5 +1,5 @@
 
-function buildRgb(imageData){
+function buildRgb(imageData) {
   const rgbValues = [];
   for (let i = 0; i < imageData.length; i += 4) {
     const rgb = {
@@ -45,7 +45,7 @@ const findBiggestColorRange = (rgbValues) => {
   }
 };
 
- function  quantization (rgbValues, depth) {
+function quantization(rgbValues, depth) {
   // base code goes here
   const MAX_DEPTH = 4;
   if (depth === MAX_DEPTH || rgbValues.length === 0) {
@@ -81,4 +81,8 @@ const findBiggestColorRange = (rgbValues) => {
   ];
 }
 
-module.exports = {buildRgb,quantization}
+function hex(x) {
+  return ("0" + parseInt(x).toString(16)).slice(-2);
+}
+
+module.exports = { buildRgb, quantization,hex }
