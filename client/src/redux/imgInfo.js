@@ -4,7 +4,7 @@ export const imgInfoSlice = createSlice({
   name: 'imgInfo',
   initialState: {
     data: [],
-    imgUrl: [],
+    imgUrl: '',
   },
   reducers: {
     setImgFile: (state,action) =>{

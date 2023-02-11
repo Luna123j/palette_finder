@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import ColorBox from "./ColorBox";
 
 export default function Palette  (){
-  const colorData= useSelector(state => state.paletteData.colorData)
-  console.log('colors from color state',colorData)
+  const colorDataHex= useSelector(state => state.paletteData.colorDataHex)
+  console.log('colors from color state',colorDataHex)
 
   return (
-    <div>{colorData.map((color,index)=>{
-      return <ColorBox color={color} index = {index} />
+    <div>{colorDataHex.map((color,index)=>{
+      return <ColorBox color={color} key = {index}  />
     })}</div>
   )
 }

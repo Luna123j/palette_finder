@@ -14,17 +14,25 @@ export default function Upload() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // const imgFile = useSelector(state => state.data)
-  const imgUrlredux = useSelector(state => state.imgUrl)
+  const imgUrlredux = useSelector(state => state.imgInfo.imgUrl)
+  const colorDataHex= useSelector(state => state.paletteData.colorDataHex)
+  const colorDataRgb= useSelector(state => state.paletteData.colorDataRgb)
+  const imgData = useSelector(state=>state.imgInfo.data)
+
 
   const [imgFile, setImgFile] = useState([])
   const [imgUrl, setImgUrl] = useState([])
 
-  const uploadHandler = (e) => {
+  console.log('^^^^^^^^hex',colorDataHex)
+  console.log('^^^^^^^^^rgb',colorDataRgb)
+  const saveHandler = (e) => {
     e.preventDefault()
     const data = {
       images: {
-        imgUrl: imgUrl,
-        palette_data: ['1'],
+        imgUrl: imgUrlredux,
+        palette_data_in_hex: [...colorDataHex],
+        palette_data_in_rgb: [...colorDataRgb],
+
       }
 
     }
@@ -46,7 +54,6 @@ export default function Upload() {
         imageUrlState.push(URL.createObjectURL(image))
         console.log("^^^^^^^^^^^^^",imageUrlState)
         setImgUrl(imageUrlState)
-        dispatch({ type: "imgInfo/setImgUrl", payload: imageUrlState });
       })
 
   }, [imgFile])
@@ -55,12 +62,13 @@ export default function Upload() {
   const onFileChange = (e) => {
     e.preventDefault();
     // dispatch({ type: "imgInfo/setImgFile", payload: [...e.target.files] });
+    console.log('this is image file data',e.target.files)
     setImgFile([...e.target.files])
 
   }
 
   console.log('^^^^^^^^^^^^^^^^^',imgUrl)
-  console.log('^^^^^^^^^^^^^^^^^',imgUrlredux)
+  console.log('^^^^^^^^^^^^^^^^^this is img url saved to redux',imgUrlredux)
 
   return (
     <div>
@@ -70,8 +78,8 @@ export default function Upload() {
       </form> */}
 
       <input type='file' accept="image/*" onChange={onFileChange} />
+      <button type="submit" onClick={saveHandler}>Save</button>
       <Canvas imgfile={imgFile} imgurl={imgUrl}/>
-      <button type="submit" onClick={uploadHandler}>submit</button>
       {/* { imgUrl.map((imageSrc, index) => <img src={imageSrc} key={index} /> )  } */}
       <Palette />
     </div>
