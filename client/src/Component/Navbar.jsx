@@ -30,11 +30,11 @@ function NavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">ABC LOGO</Navbar.Brand>
+        <Navbar.Brand href="/">ABC LOGO</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="justify-content-end">
-            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="/history">Saved</Nav.Link>
             <Navbar.Text>
               {isLoggedIn.status ?
                 <>Logged in as : {isLoggedIn.user.username} | <button onClick={logoutHandler}>Logout</button></>
