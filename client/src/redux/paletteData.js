@@ -3,18 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 export const paletteDataSlice = createSlice({
   name: 'paletteData',
   initialState: {
-    colorData: []
+    colorDataHex: [],
+    colorDataRgb: []
   },
   reducers: {
-    setPaletteData: (state,action) =>{
-      state.colorData = action.payload;
+    setPaletteDataRgb: (state,action) =>{
+      state.colorDataRgb = action.payload;
+    },
+    setPaletteDataHex: (state,action) =>{
+      state.colorDataHex = action.payload;
     },
     reset:(state) =>{
-      state.colorData = [];
+      state.colorDataHex = [];
+      state.colorDataRgb = [];
     },
   }
 })
 
-export const {setPaletteData,reset} = paletteDataSlice.actions;
+export const {setPaletteDataRgb,setPaletteDataHex,reset} = paletteDataSlice.actions;
 
 export default paletteDataSlice.reducer;
