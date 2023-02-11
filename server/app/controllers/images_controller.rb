@@ -28,6 +28,6 @@ class ImagesController < ApplicationController
 
   private
   def image_params
-    params.require(:images).permit(:imgUrl, palette_data: [])
+    params.require(:images).permit(:imgUrl, palette_data_in_rgb: [:r,:b,:g], palette_data_in_hex: [])
   end
 end

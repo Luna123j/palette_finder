@@ -16,7 +16,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_164941) do
 
   create_table "images", force: :cascade do |t|
     t.string "imgUrl"
-    t.string "palette_data"
+    t.string "palette_data_in_rgb", default: [], array: true
+    t.string "palette_data_in_hex", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
