@@ -34,10 +34,12 @@ function NavBar() {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="justify-content-end">
-            <Nav.Link href="/history">Saved</Nav.Link>
+            {isLoggedIn.status ? 
+              <Nav.Link href="/history">Saved</Nav.Link> : ""
+            }
             <Navbar.Text>
               {isLoggedIn.status ?
-                <>Logged in as : {isLoggedIn.user.username} | <button onClick={logoutHandler}>Logout</button></>
+                  <div>Logged in as : {isLoggedIn.user.username} | <button onClick={logoutHandler}>Logout</button></div>
                 :
                 <><Link to="/users" >Signup</Link> | <Link to="/login" >Login</Link></>
               }

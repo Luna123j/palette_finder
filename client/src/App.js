@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import Upload from './Component/Upload';
 import SavedImage from './Component/SavedImage';
+import Explore from './Component/Explore';
 
 function App() {
   
@@ -37,6 +38,8 @@ function App() {
         <Route path="/users" element={<Signup />} />
         <Route path="/upload" element={<Upload />} />
         <Route path='/history' element={<SavedImage />} />
+        <Route path='/explore' element={<Explore />} />
+
       </Routes>
     </BrowserRouter>
   );

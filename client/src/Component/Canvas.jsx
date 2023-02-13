@@ -24,26 +24,26 @@ export default function Canvas(props) {
       if (imgUrl !== undefined) {
         ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height);
         const imageData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
-        console.log('this is image data', imageData)
+        // console.log('this is image data', imageData)
         // dispatch({type: 'imgInfo/setImgFile', payload: imageData})
         const rgbValues = buildRgb(imageData.data);
         const colorDataInRgb = quantization(rgbValues, 2)
         colors = colorDataInRgb
-        console.log(colors)
+        // console.log(colors)
         const colorDataInHex = colors.map((color) => {
           return ("#" + hex(color.r) + hex(color.g) + hex(color.b)).toUpperCase();
         })
-        console.log(colorDataInHex)
+        // console.log(colorDataInHex)
         dispatch({ type: 'paletteData/setPaletteDataRgb', payload: colorDataInRgb })
         dispatch({ type: 'paletteData/setPaletteDataHex', payload: colorDataInHex })
 
         const dataURL = canvas.toDataURL();
-        console.log('this is canva data url',dataURL);
+        // console.log('this is canva data url',dataURL);
         dispatch({ type: "imgInfo/setImgUrl", payload: `${dataURL}` });
       }
     }
 
-  }, [imgUrl])
+  }, [])
 
 
   // const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
